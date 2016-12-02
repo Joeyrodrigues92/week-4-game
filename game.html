@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Get It to The Total</title>
+  <style type="text/css">
+    .sethImage {
+      width: 300px;
+      height: 200px;
+      padding: 10px;
+    }
+    
+    body{
+      background-image: url('http://www.ecouterre.com/wp-content/uploads/2013/07/mink-1-537x402.jpg'); 
+    }
+
+    h1, h2 {
+      color:white;
+    }
+  </style>
+
+
+</head>
+<body>
+
+<h1> Get It To The Total!</h1>
+
+<h2 id ='total'></h2>
+
+<h2 id ='guessing'></h2>
+
+<h2 id = 'win'></h2>
+
+<h2 id = 'losses'></h2>
+
+<div id = "choices"></div>
+
+<h2 id = 'status'></h2>
+
+<!-- java/jquery begins here -->
+<script type ="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+ <script type ="text/javascript">
+
+var targetNumber = Math.floor((Math.random() * 101) + 19);
+
+$('#total').text('Get it to: ' +  targetNumber);
+
+var counter = 0;//counts our total 
+
+var wins = 0;
+
+$('#win').text('Wins: ' + wins);
+
+var losses = 0;
+
+$('#losses').text('Losses: ' + losses);
+
+
+var imageOptions = ['../week-4-game/assests/images/diddy.jpg', '../week-4-game/assests/images/hill.jpg', '../week-4-game/assests/images/jeffery.jpg', '../week-4-game/assests/images/snow.jpg']
+
+
+// giving each image a value from the array
+for (var i = 0; i < imageOptions.length; i++) {
+
+  var imageChoice = $('<img>');
+    
+    imageChoice.addClass('sethImage');//
+    
+    imageChoice.attr('src', imageOptions[i]);
+  
+    imageChoice.attr("data-sethvalue", Math.floor(Math.random() * 12) + 1);
+   
+    $("#choices").append(imageChoice);
+  }
+
+  //reset total
+  function resetTotal() {
+
+    var targetNumber = Math.floor((Math.random() * 101) + 19);
+
+    $('#total').text('Get it to: ' +  targetNumber);
+
+    counter = 0;
+
+    for (var i = 0; i < imageOptions.length; i++) {
+
+  var imageChoice = $('<img>');
+    
+    imageChoice.addClass('sethImage');//
+    
+    imageChoice.attr('src', imageOptions[i]);
+  
+    imageChoice.attr("data-sethvalue", Math.floor(Math.random() * 12) + 1);
+   
+    $("#choices").append(imageChoice);
+  }
+  }
+
+ 
+  
+//when you click it, what happens
+$(".sethImage").on("click", function() {
+
+    var imageValue = ($(this).data("sethvalue"));
+    
+    counter += imageValue;
+   
+    $('#guessing').text("Were you are: " + counter);
+   
+    if (counter === targetNumber) {
+  
+    $("#status").text('You Win! Have a Jerry!');
+    
+      wins++;
+
+     $('#win').text('Wins: ' + wins);
+
+     resetTotal();
+
+    }
+   
+    else if (counter >= targetNumber) {
+   
+    $('#status').text('Loser! Learn How to Count.');
+
+      losses++;
+
+      $('#losses').text('Losses: ' + losses);
+
+      resetTotal();
+
+    }
+  });
+
+ </script>
+</body>
+</html>
