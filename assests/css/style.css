@@ -6,13 +6,20 @@
   #directions {
     width: 400px;
     background-color: black;
+    font-size: 20px;
+  }
+
+  #name {
+    font-size: 50px;
   }
 
   #display {
     background-color: black;
     width: 210px;
+    font-size: 20px;
+    margin-top: 50px;
   }
-    
+
     body{
       background-image: url('http://www.ecouterre.com/wp-content/uploads/2013/07/mink-1-537x402.jpg'); 
     }
