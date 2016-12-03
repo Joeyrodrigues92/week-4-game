@@ -1,0 +1,22 @@
+.sethImage {
+      width: 300px;
+      height: 200px;
+      padding: 10px;
+    }
+  #directions {
+    width: 400px;
+    background-color: black;
+  }
+
+  #display {
+    background-color: black;
+    width: 210px;
+  }
+    
+    body{
+      background-image: url('http://www.ecouterre.com/wp-content/uploads/2013/07/mink-1-537x402.jpg'); 
+    }
+
+    h1, h2 {
+      color:yellow;
+    }

@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Get It to The Total</title>
-  <style type="text/css">
+<!--   <style type="text/css">
     .sethImage {
       width: 300px;
       height: 200px;
@@ -16,30 +16,49 @@
     h1, h2 {
       color:white;
     }
-  </style>
+  </style> -->
 
+  
+ <link rel="stylesheet" type="text/css" href="../week-4-game/assests/css/style.css">
 
 </head>
 <body>
 
-<h1> Get It To The Total!</h1>
+  <h1> Get It To The Total!</h1>
 
-<h2 id ='total'></h2>
+  <h2 id = "directions"> Directions <br>
+  You will be given a random number at the start of the game.
+  <br>
+  There are four images below. By clicking on the image. you will add a specific amount of points to your total score.
+  <br>
+  You win the game by making your total score to random number you lose the game if your total score goes above the random number.
+  <br>
+  The value of each image is hidden from you until you click on it.
+  Each time when the game start the game will change the values of each image.</h2>
 
-<h2 id ='guessing'></h2>
 
-<h2 id = 'win'></h2>
+<div id = 'display'>
+  <h2 id ='total'></h2>
 
-<h2 id = 'losses'></h2>
+  <h2 id ='guessing'></h2>
 
-<div id = "choices"></div>
+  <h2 id = 'win'></h2>
 
-<h2 id = 'status'></h2>
+  <h2 id = 'losses'></h2>
+</div>
 
-<!-- java/jquery begins here -->
+  <div id = "choices"></div>
+
+  <h2 id = 'status'></h2>
+ 
+
+<!-- //java/jquery begins here -->
 <script type ="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 
  <script type ="text/javascript">
+ 
+// onload = function() {loadPlease()};
+
 
 var targetNumber = Math.floor((Math.random() * 101) + 19);
 
@@ -60,40 +79,27 @@ var imageOptions = ['../week-4-game/assests/images/diddy.jpg', '../week-4-game/a
 
 
 // giving each image a value from the array
-for (var i = 0; i < imageOptions.length; i++) {
+  for (var i = 0; i < imageOptions.length; i++) {
 
-  var imageChoice = $('<img>');
+      var imageChoice = $('<img>');
+      
+      imageChoice.addClass('sethImage');//
+      
+      imageChoice.attr('src', imageOptions[i]);
     
-    imageChoice.addClass('sethImage');//
-    
-    imageChoice.attr('src', imageOptions[i]);
+      imageChoice.attr("data-sethvalue", Math.floor(Math.random() * 12) + 1);
+     
+      $("#choices").append(imageChoice);
+    }
   
-    imageChoice.attr("data-sethvalue", Math.floor(Math.random() * 12) + 1);
-   
-    $("#choices").append(imageChoice);
-  }
-
-  //reset total
+ //reset total
   function resetTotal() {
 
     var targetNumber = Math.floor((Math.random() * 101) + 19);
 
     $('#total').text('Get it to: ' +  targetNumber);
 
-    counter = 0;
-
-    for (var i = 0; i < imageOptions.length; i++) {
-
-  var imageChoice = $('<img>');
-    
-    imageChoice.addClass('sethImage');//
-    
-    imageChoice.attr('src', imageOptions[i]);
-  
-    imageChoice.attr("data-sethvalue", Math.floor(Math.random() * 12) + 1);
-   
-    $("#choices").append(imageChoice);
-  }
+    counter = 0;  
   }
 
  
@@ -105,7 +111,7 @@ $(".sethImage").on("click", function() {
     
     counter += imageValue;
    
-    $('#guessing').text("Were you are: " + counter);
+    $('#guessing').text("Where you are: " + counter);
    
     if (counter === targetNumber) {
   
@@ -131,7 +137,6 @@ $(".sethImage").on("click", function() {
 
     }
   });
-
- </script>
+</script>
 </body>
 </html>
