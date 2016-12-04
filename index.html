@@ -53,11 +53,8 @@
 
   <h2 id = 'status'></h2>
 
-
-<!-- //java/jquery begins here -->
-<script type ="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-
- <script type ="text/javascript">
+  <script src="https://code.jquery.com/jquery.js"></script>
+<script src="assests/javascript/game.js">
  
 // onload = function() {loadPlease()};
 var targetNumber = Math.floor((Math.random() * 101) + 19);
@@ -77,7 +74,8 @@ $('#losses').text('Losses: ' + losses);
 var imageOptions = ['../week-4-game/assests/images/diddy.jpg', '../week-4-game/assests/images/hill.jpg', '../week-4-game/assests/images/jeffery.jpg', '../week-4-game/assests/images/snow.jpg']
 
 // giving each image a value from the array
-  for (var i = 0; i < imageOptions.length; i++) {
+  function displayImages (){
+    for (var i = 0; i < imageOptions.length; i++) {
 
       var imageChoice = $('<img>');
       
@@ -89,6 +87,9 @@ var imageOptions = ['../week-4-game/assests/images/diddy.jpg', '../week-4-game/a
      
       $("#choices").append(imageChoice);
     }
+  }
+  
+  displayImages();
   
  //reset total
   function resetTotal() {
@@ -97,12 +98,17 @@ var imageOptions = ['../week-4-game/assests/images/diddy.jpg', '../week-4-game/a
 
     $('#total').text('Get it to: ' +  targetNumber);
 
-    counter = 0;  
+    counter = 0;
+    // $('#guessing').text(counter);
+
+    $('#choices').empty();
+
+    displayImages();
   }
  
   
 //when you click it, what happens
-$(".sethImage").on("click", function() {
+$(document).on("click", ".sethImage", function()  {
 
     var imageValue = ($(this).data("sethvalue"));
     
@@ -121,7 +127,7 @@ $(".sethImage").on("click", function() {
      resetTotal();
     }
    
-    else if (counter >= targetNumber) {
+    else if (counter > targetNumber) {
    
     $('#status').text('Loser! Learn How to Count.');
 
