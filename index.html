@@ -54,10 +54,10 @@
   <h2 id = 'status'></h2>
 
   <script src="https://code.jquery.com/jquery.js"></script>
-<script src="assests/javascript/game.js">
+<script>
  
 // onload = function() {loadPlease()};
-var targetNumber = Math.floor((Math.random() * 101) + 19);
+targetNumber = Math.floor((Math.random() * 101) + 19);
 
 $('#total').text('Get it to: ' +  targetNumber);
 
@@ -99,14 +99,14 @@ var imageOptions = ['../week-4-game/assests/images/diddy.jpg', '../week-4-game/a
     $('#total').text('Get it to: ' +  targetNumber);
 
     counter = 0;
-    // $('#guessing').text(counter);
+    // $('#guessing').text('Where you at: ' + counter);
 
     $('#choices').empty();
 
     displayImages();
   }
  
-  
+
 //when you click it, what happens
 $(document).on("click", ".sethImage", function()  {
 
